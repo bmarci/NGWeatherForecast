@@ -63,3 +63,18 @@ export interface Weather {
 export interface Summary {
   city: string;
 }
+
+export interface WeatherError {
+  cod: string;
+  message: string;
+}
+
+export interface WeatherForecastByTime {
+  dt: number;
+  temp: number;
+}
+
+export interface WeatherResult {
+  city: string;
+  forecasts: WeatherForecastByTime[];
+}

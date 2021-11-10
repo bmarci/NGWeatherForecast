@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Weather } from '../model/weather';
 
 @Injectable()
 export class WeatherService {
@@ -14,6 +15,6 @@ export class WeatherService {
   constructor(private http: HttpClient) { }
 
   searchWeatherForCity(city) {
-    // implement the service
+    return this.http.get<Weather>(this.url, {params: {...this.params, q: city}});
   }
 }

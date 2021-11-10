@@ -1,20 +1,18 @@
+<div *ngIf="error" class="error">{{error}}</div>
 <table class="table">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">City</th>
-    <th scope="col">6 AM</th>
-    <th scope="col">12 PM</th>
-    <th scope="col">6 PM</th>
-    <th scope="col">12 AM</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td scope="row">London</td>
-    <td scope="row">3 &deg;</td>
-    <td scope="row">12.5 &deg;</td>
-    <td scope="row">9 &deg;</td>
-    <td scope="row">2 &deg;</td>
-  </tr>
-  </tbody>
+    <ng-container *ngFor="let weather of weatherResults">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">City</th>
+            <th scope="col" *ngFor="let forecast of weather.forecasts" scope="row">{{forecast.dt * 1000 | date:'h a':'+0000'}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td scope="row">{{weather.city}}</td>
+            <td *ngFor="let forecast of weather.forecasts" scope="row">{{forecast.temp}} &deg;</td>
+        </tr>
+        </tbody>
+    </ng-container>
+    <div *ngIf="loading">Loading data...</div>
 </table>
