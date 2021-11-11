@@ -25,6 +25,7 @@ export function reducer (state = initialState, action: WeatherAction): WeatherSt
       }
     }
     case LOAD_WEATHER_SUCCESS: {
+      console.log(`${JSON.stringify(action.payload)} << action.payload`)
       const newWeather = { city:action.payload.city.name, forecasts: action.payload.list
           .filter((elem, index) => index % 2 === 0) // The list period is 3 hours, we need 6, so keep every second elem
           .slice(0, 4)

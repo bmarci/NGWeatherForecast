@@ -1,20 +1,20 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html'
 })
 export class SearchComponent {
-
   @Output()
   citySearch: EventEmitter<string> = new EventEmitter<string>();
 
-  searchForm = this.formBuilder.group({
-    city: '',
-  });
+  searchForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
+    this.searchForm = this.formBuilder.group({
+      city: '',
+    });
   }
 
   search() {

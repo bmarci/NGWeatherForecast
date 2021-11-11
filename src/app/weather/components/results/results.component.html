@@ -1,5 +1,5 @@
-<div *ngIf="error" class="error">{{error}}</div>
-<table class="table">
+<div *ngIf="error" class="error" id="forecastErrorMessage">{{error}}</div>
+<table class="table" id="forecastTable">
     <ng-container *ngFor="let weather of weatherResults">
         <thead class="thead-dark">
         <tr>
@@ -14,5 +14,5 @@
         </tr>
         </tbody>
     </ng-container>
-    <div *ngIf="loading">Loading data...</div>
+    <div *ngIf="loading" id="forecastLoading">Loading data...</div>
 </table>
